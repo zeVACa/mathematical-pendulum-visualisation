@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { CanvasPendulum } from './components/canvasPendulum/CanvasPendulum';
+import { FormConfiguration } from './components/configurationBar/FormConfiguration';
+import { Description } from './components/description/Description';
 
 function App() {
+  const [length, setLength] = useState(1);
+  const [weight, setWeight] = useState(1);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <CanvasPendulum />
+        <div className="canvas-info">
+          <Description length={length} weight={weight} />
+          <FormConfiguration setLength={setLength} setWeight={setWeight} />
+        </div>
+      </div>
     </div>
   );
 }
