@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const Description = ({ length, weight }) => {
+import { useSelector } from 'react-redux';
+
+export const Description = () => {
+  const { length, weight } = useSelector((state) => state.physics);
+
   return (
     <div>
       <h2>Вес груза: {length}кг</h2>

@@ -1,20 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { CanvasPendulum } from './components/canvasPendulum/CanvasPendulum';
 import { FormConfiguration } from './components/configurationBar/FormConfiguration';
 import { Description } from './components/description/Description';
 
 function App() {
-  const [length, setLength] = useState(1);
-  const [weight, setWeight] = useState(1);
+  const [isRightDirection, setIsRightDirection] = useState(true);
 
   return (
     <div className="App">
       <div className="container">
-        <CanvasPendulum />
+        <CanvasPendulum
+          isRightDirection={isRightDirection}
+          setIsRightDirection={setIsRightDirection}
+        />
         <div className="canvas-info">
-          <Description length={length} weight={weight} />
-          <FormConfiguration setLength={setLength} setWeight={setWeight} />
+          <Description />
+          <FormConfiguration />
         </div>
       </div>
     </div>

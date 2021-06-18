@@ -1,6 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const SliderLength = ({ setLength }) => {
+import { changeLength } from '../../redux/physicalSpecifications/actions';
+
+export const SliderLength = () => {
+  const dispatch = useDispatch();
+  const { length } = useSelector((state) => state.physics);
+
   return (
     <div>
       <div>
@@ -8,11 +14,11 @@ export const SliderLength = ({ setLength }) => {
       </div>
       <input
         type="range"
-        name=""
+        value={length}
         id="length-range"
         min="1"
         max="100"
-        onChange={(e) => setLength(e.currentTarget.value)}
+        onChange={(e) => dispatch(changeLength(e.currentTarget.value))}
       />
     </div>
   );

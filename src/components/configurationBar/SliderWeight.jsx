@@ -1,6 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const SliderWeight = ({ setWeight }) => {
+import { changeWeight } from '../../redux/physicalSpecifications/actions';
+
+export const SliderWeight = () => {
+  const dispatch = useDispatch();
+  const { weight } = useSelector((state) => state.physics);
+
   return (
     <div>
       <div>
@@ -8,11 +14,11 @@ export const SliderWeight = ({ setWeight }) => {
       </div>
       <input
         type="range"
-        name=""
+        value={weight}
         id="weight-range"
         min="1"
         max="100"
-        onChange={(e) => setWeight(e.currentTarget.value)}
+        onChange={(e) => dispatch(changeWeight(e.currentTarget.value))}
       />
     </div>
   );
